@@ -1,0 +1,301 @@
+﻿
+#
+# IK Names NonHumans
+#
+
+# Dwarven/Iosan/Gobber/Ogrun/Trollkin
+
+%Gender%,xxx
+%Race%,xxx
+%Pick%, 
+
+@Gender,Male,Male/Female
+@Race,Dwarven,Dwarven/Iosan/Gobber/Ogrun/Trollkin
+
+:Start
+1, [%Race%%Gender%] {If~%Race% = Gobber  ? [%Race%Female] [%Race%Male]} [%Race%Surname] 
+
+:DwarvenMale
+1, Admon
+2, Arlack
+3, Barl
+4, Bartan
+5, Bindar
+6, Brogan
+7, Bullin
+8, Decklin
+9, Dragar
+10, Dunarl
+11, Durg
+12, Durke
+13, Ecken
+14, Freitag
+15, Galtar
+16, Gamack
+17, Gerhard
+18, Gidrick
+19, Golrick
+20, Gruhn
+21, Guvul
+22, Havelock
+23, Hedwig
+24, Herne
+25, Holdur
+26, Jaldun
+27, Jurg
+28, Kalmon
+29, Lossock
+30, Redgar
+31, Theldor
+32, Tholrick
+33, Tholrick
+34, Thorne
+
+:DwarvenFemale
+1, Anlost
+2, Bredine
+3, Burnev
+4, Cathro
+5, Celath
+6, Crelyth
+7, Crieda
+8, Darlave
+9, Dira
+10, Garline
+11, Gedine
+12, Geduve
+13, Girta
+14, Gorina
+15, Heleth
+16, Hiln
+17, Magrat
+18, Marba
+19, Mendine
+20, Nollos
+21, Sartine
+22, Torlith
+23, Uhlith
+24, Ulave
+25, Vetta
+
+:DwarvenSurname
+1, Belgre
+2, Blackheel
+3, Blackitt
+4, Darrow
+5, Dolgren
+6, Domack
+7, Dorgun
+8, Durkin
+9, Fortros
+10, Gherke
+11, Hardwick
+12, Icehold
+13, Lugro
+14, Netweaver
+15, Olghrd
+16, Oreblood
+17, Redhammer
+18, Rothrock
+19, Serric
+20, Sigmur
+21, Softshadow
+22, Steadfast
+23, Stoneground
+24, Torgun
+25, Urdro
+26, Whitnock
+27, Wroughthammer
+
+:IosanMale
+1, Alcyr
+2, Avross
+3, Bres
+4, Callael
+5, Callis
+6, Cinsyr
+7, Cyvross
+8, Erryll
+9, Felcyr
+10, Glyssor
+11, Gossyr
+12, Laconfir
+13, Lani
+14, Lissor
+15, Neriwhen
+16, Pelyth
+17, Rillis
+18, Sarlos
+19, Shas
+20, Thale
+21, Tryiss
+22, Tylth
+23, Vyros
+24, Vystral
+
+:IosanFemale
+1, Aesha
+2, Alyssa
+3, Caelyth
+4, Cytyss
+5, Dahlia
+6, Edrea
+7, Falcir
+8, Feen
+9, Gaelyr
+10, Hellith
+11, Lorimir
+12, Lothwyn
+13, Meryll
+14, Miir
+15, Renyll
+16, Sacyl
+17, Shael
+18, Sillith
+19, Tanyr
+20, Tathir
+21, Tenae
+22, Velwhin
+23, Veryth
+24, Ystith
+
+:IosanSurname
+1, Alcyan
+2, Asir
+3, Breir
+4, Ellowuyr
+5, Ferryll
+6, Graccys
+7, Hallyr
+8, Heryllith
+9, Larisar
+10, Lloryrr
+11, Luynmyr
+12, Lyorys
+13, Menellyth
+14, Raefyll
+15, Reyvrese
+16, Ryssyll
+17, Syvas
+18, Vrir
+19, Waelen
+20, Wyldiss
+21, Wyllothyr
+
+:GobberMale
+1, Ad
+2, Ant
+3, Az
+4, Boll
+5, Bert
+6, Bork
+7, Dag
+8, Dar
+9, Gek
+10, Gork
+11, Gort
+12, Gul
+13, Gun
+14, Hek
+15, Hok
+16, Kanh
+17, Kug
+18, Lan
+19, Lok
+20, Mo
+21, Mog
+22, Nat
+23, Nun
+24, Ork
+25, Oz
+26, Pok
+27, Poon
+28, Rak
+29, Ranh
+30, Tak
+31, Thak
+32, Tok
+33, Tot
+34, Tun
+35, Tur
+36, Un
+37, Vog
+38, Vorg
+39, Zhag
+
+:GobberFemale
+1, Agghi
+2, Ala
+3, Anh
+4, Ano
+5, Ara
+6, Atra
+7, Bel
+8, Da
+9, Dar
+10, Enda
+11, Gan
+12, Gara
+13, Geka
+14, Gola
+15, Gomm
+16, Gren
+17, Grend
+18, Kat
+19, Lom
+20, Mari
+21, Meg
+22, Nan
+23, Rala
+24, Ren
+25, Sele
+26, Tere
+27, Ugga
+28, Ula
+29, Vel
+30, Walu
+31, Wikka
+
+:GobberSurname
+1, {If~%Gender% = Female  ? {Replace~g,k,[GobberSurnameParts]}/[GobberSurnameParts]}
+
+:GobberSurnameParts
+1, {If~%Gender% = Female  ? ak/ag}
+2, {If~%Gender% = Female  ? aken/agen}
+3, {If~%Gender% = Female  ? akkan/aggan}
+4, ahun
+5, {If~%Gender% = Female  ? alok/alog}
+6, amun
+7, aneg
+8, anen
+9, anheg
+10, ano
+11, arag
+12, atol
+13, dara
+14, egga
+15, eleg
+16, emun {If~%Gender% = Female  ? ag/ak}
+17, gamun {If~%Gender% = Female  ? ag/ak}
+18, gana {If~%Gender% = Female  ? ag/ak}
+19, gar {If~%Gender% = Female  ? ag/ak}
+20, garda {If~%Gender% = Female  ? ag/ak}
+21, gekan {If~%Gender% = Female  ? ag/ak}
+22, heleg, helek {If~%Gender% = Female  ? ag/ak}
+23, holdt {If~%Gender% = Female  ? ag/ak}
+24, kam {If~%Gender% = Female  ? ag/ak}
+25, kan {If~%Gender% = Female  ? ag/ak}
+26, meleg, melek {If~%Gender% = Female  ? ag/ak}
+27, obalt {If~%Gender% = Female  ? ag/ak}
+28, omog, omok {If~%Gender% = Female  ? ag/ak}
+29, ona {If~%Gender% = Female  ? ag/ak}
+30, onan {If~%Gender% = Female  ? ag/ak}
+31, oran {If~%Gender% = Female  ? ag/ak}
+32, ralog, ralok {If~%Gender% = Female  ? ag/ak}
+33, rel {If~%Gender% = Female  ? ag/ak}
+34, uladar {If~%Gender% = Female  ? ag/ak}
+35, ulag, ulak {If~%Gender% = Female  ? ag/ak}
+36, ulug, uluk {If~%Gender% = Female  ? ag/ak}
+37, uman {If~%Gender% = Female  ? ag/ak}
+38, uren {If~%Gender% = Female  ? ag/ak}
+39, vi {If~%Gender% = Female  ? ag/ak}

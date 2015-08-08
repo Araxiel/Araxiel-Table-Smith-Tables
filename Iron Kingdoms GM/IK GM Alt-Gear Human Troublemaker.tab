@@ -1,0 +1,47 @@
+#
+# IK GM Alt-Gear Human Troublemaker
+#
+
+%x%,0
+
+%WeaponInput%,0
+@WeaponInput,1,Select weapon kind,Random,Improvised,Expensive
+%WeaponSelector%,0
+%weps%,0
+
+:Start
+1,[Display]
+
+# ------------------------------
+#:Display
+#1,|WeaponSelector={Select~%WeaponInput%,1,[weapons],2,[improvised],3,[expensive],[weapons]}|
+#_|weps=%WeaponSelector%|
+# ------------------------------
+
+:Display
+1,{Select~%WeaponInput%,1,[weapons],2,[improvised],3,[expensive],[weapons]}
+_{Line~left,50}
+
+# ------------------------------
+# Main Generators
+# ------------------------------
+
+;weapons
+25,Sword
+12,Dagger
+9,Axe
+5,Cutlass
+7,Cat's Paw
+2,Deadblow Hammer
+7,Gaff Hand
+4,Gaff Pole
+8,Chain
+5,Railroad Spike
+16,{Generate~0,Improvised Weapon,improv}
+
+;improv
+1,Pipe
+1,Shiv
+1,Wrench
+1,Ball hammer
+1,Claw hammer

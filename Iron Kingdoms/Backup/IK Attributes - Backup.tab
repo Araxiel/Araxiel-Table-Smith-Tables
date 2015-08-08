@@ -1,0 +1,81 @@
+﻿#
+# IK Attributes
+#
+
+# ------------------------------
+# Variables
+# ------------------------------
+
+%Race%,0
+
+%Level%,1
+
+%PHY%,0
+%SPD%,0
+%AGL%,0
+%PRW%,0
+%POI%,0
+%INT%,0
+%PER%,0
+%ARC%,0
+
+%INI%,0
+%DEF%,0
+%ARM%,0
+%WILL%,0
+
+%Statblock%,xxx
+%Name%,xxx
+
+# ------------------------------
+# Main
+# ------------------------------
+
+:Start
+1,[GenStats][DisplayCharacter]
+
+:GenStats
+1,[Race]
+_{DSCreate~Statblock,name,xxxxx,PHY,0,SPD,0,STR,0,AGL,0,PRW,0,POI,0,INT,0,ARC,0,PER,0}
+_{DSAddNR~Statblock,name,Human,PHY,5,SPD,6,STR,4,AGL,3,PRW,4,POI,4,INT,3,ARC,0,PER,3}
+_{DSAddNR~Statblock,name,Dwarf,PHY,6,SPD,4,STR,5,AGL,3,PRW,4,POI,3,INT,4,ARC,0,PER,3}
+_{DSAddNR~Statblock,name,Gobber,PHY,4,SPD,6,STR,3,AGL,4,PRW,4,POI,3,INT,3,ARC,0,PER,3}
+_{DSAddNR~Statblock,name,Iosan,PHY,5,SPD,6,STR,4,AGL,3,PRW,4,POI,4,INT,4,ARC,0,PER,3}
+_{DSAddNR~Statblock,name,Nyss,PHY,5,SPD,6,STR,4,AGL,4,PRW,4,POI,4,INT,3,ARC,0,PER,3}
+_{DSAddNR~Statblock,name,Ogrun,PHY,6,SPD,5,STR,6,AGL,3,PRW,4,POI,3,INT,3,ARC,0,PER,2}
+_{DSAddNR~Statblock,name,Trollkin,PHY,6,SPD,5,STR,5,AGL,3,PRW,4,POI,2,INT,3,ARC,0,PER,3}
+
+_|PHY={DSGet~Statblock,{DSFind~Statblock,1,name = %Race%},PHY}|
+
+:DisplayCharacter
+1, <b>Race:</b> %Race%{CR~}{CR~}
+
+_<b>PHY:</b> %PHY%{CR~}
+_<b>SPD:</b> {DSGet~Statblock,{DSFind~Statblock,1,name = %Race%},SPD}{CR~}
+_<b>AGL:</b> {DSGet~Statblock,{DSFind~Statblock,1,name = %Race%},AGL}{CR~}
+_<b>PRW:</b> {DSGet~Statblock,{DSFind~Statblock,1,name = %Race%},PRW}{CR~}
+_<b>POI:</b> {DSGet~Statblock,{DSFind~Statblock,1,name = %Race%},POI}{CR~}
+_<b>INT:</b> {DSGet~Statblock,{DSFind~Statblock,1,name = %Race%},INT}{CR~}
+_<b>ARC:</b> {DSGet~Statblock,{DSFind~Statblock,1,name = %Race%},ARC}{CR~}
+_<b>PER:</b> {DSGet~Statblock,{DSFind~Statblock,1,name = %Race%},PER}{CR~}{CR~}
+
+_<b>DEF:</b> [DEF]{CR~}
+_<b>ARM:</b> [ARM]{CR~}
+_<b>INIT:</b> [INI]{CR~}
+_<b>WILL:</b> [WILL]{CR~}{CR~}
+
+# ------------------------------
+# Stats
+# ------------------------------
+
+:Race
+1-20, |Race=Human|
+21-23, |Race=Dwarf|
+24-25, |Race=Gobber|
+26, |Race=Iosan|
+27, |Race=Nyss|
+28, |Race=Ogrun|
+29-30, |Race=Trollkin|
+
+:DEF
+1, {DSGet~Statblock,{DSFind~Statblock,1,name = %Race%},SPD}+{DSGet~Statblock,{DSFind~Statblock,1,name = %Race%},AGL}

@@ -1,0 +1,43 @@
+﻿#
+# IK Places
+# Nations from the Iron Kingdoms
+
+%place%,0
+%num%,0
+
+:Start
+1,[TemperateAdj]
+
+:Races
+1,[Human]
+2,Cryx
+
+:Human
+1,Cygnar
+2,Khador
+3,Llael
+4,Ord
+5,Sul
+
+:HumanAdj
+1,{If~%num%=0 ? |num={Dice~1d{Count~Human}}|}|place=[Human=%num%]|
+_{If~%place%=Cygnar ? Cygnaran}
+_{If~%place%=Khador ? Khadoran}
+_{If~%place%=Llael ? Llaelese}
+_{If~%place%=Ord ? Ordic}
+_{If~%place%=Sul ? Sulese}
+
+#Explenation:
+# First line checks if the 'num' is 0, which means no other table (such as TemperateAdj) is sending a number. If it is 0, then it creates a number based on the amount of human places there are. It then sets 'place' as the nation based on the number created. The rest of the table is then simply the adjective form of the related nation.
+
+#These are lists of countries that have things in common. They "force" the 'num' value to specific one.
+
+:Temperate
+1,[Human=1]
+2,[Human=3]
+3,[Human=4]
+
+:TemperateAdj
+1,|num=1|[HumanAdj]
+2,|num=3|[HumanAdj]
+3,|num=4|[HumanAdj]

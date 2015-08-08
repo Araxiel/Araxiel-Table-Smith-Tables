@@ -1,0 +1,22 @@
+# Religion
+#
+# Various tables intended for use by other tables
+#
+# Gods taken from the world of Mythosa
+# (http://www.mythosa.net)
+#
+# Copyright 2004 Bruce A. Gulke
+#
+
+:Deities
+1-5,Alyara
+6-8,Aeryandris
+9-11,Lyranis
+12-14,Baltur
+15-17,Dynera
+18-20,Jhadara
+
+:Evil Gods
+1-4,Azakhar
+5-7,Shaarizad
+8,Aadu

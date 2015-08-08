@@ -1,0 +1,82 @@
+﻿#
+# AR Room Generator
+# By Araxiel
+
+# ------------------------------
+# Variables
+# ------------------------------
+
+%num%,0
+
+# ------------------------------
+# Main
+# ------------------------------
+
+:Start
+1,[Display]
+
+:Display
+1, [Roomkind]. {CR~}
+_[Middle]{CR~}
+
+_{Line~left,50}
+
+# ------------------------------
+# Stats
+# ------------------------------
+
+:Roomkind
+1, This room seems to {AorAn~ {Trim~be [Size] [Roomname]}}
+
+:Roomname
+1,living room
+2,storage room
+3,pantry
+4,hallway
+
+:Middle
+1,In the middle of the room [LargeObject]
+
+;LargeObject
+1,is a table with [smallObjectAmount]
+1,are [RanAmount] barrels {Generate~0,containing (...),insideContainer}
+
+//Trying to get the damn a or an if it is singular
+
+;smallObject
+1,{PluralIf~%num%,bottle} of [AR Drinks.Start]
+1,empty {PluralIf~%num%,bottle} of [AR Drinks.Start]
+
+;insideContainer
+< containing 
+1,[smallObjectAmount]
+
+;smallObjectAmount
+1,[RanAmount] [~smallObject]
+5,[RanAmount] [~smallObject] BLA [RanAmount] [~smallObject]
+1,[RanAmount] [~smallObject], [RanAmount] [~smallObject] and [RanAmount] [~smallObject]
+1,[RanAmount] {Trim~[LN~smallObject]}, [RanAmount] {Trim~[LN~smallObject]}, [RanAmount] {Trim~[LN~smallObject]} and [RanAmount] {Trim~[LN~smallObject]}
+
+:Size
+1-6, 
+7-8,small
+9,large
+
+;NumWord
+1,one|num=1|
+1,two|num=2|
+1,three|num=3|
+1,four|num=4|
+1,five|num=5|
+1,six|num=6|
+1,seven|num=7|
+1,eight|num=8|
+1,nine|num=9|
+1,ten|num=10|
+
+;RanAmount
+2,|num=1|
+1,few |num={Dice~2d6}|
+1,couple |num={Dice~2d4}|
+1,lot |num={Dice~4d3}|
+1,number of |num={Dice~1d10+1}|

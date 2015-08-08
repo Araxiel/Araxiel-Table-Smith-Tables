@@ -1,0 +1,27 @@
+﻿#
+# IK Places
+# Nations from the Iron Kingdoms
+
+%place%,0
+
+:Start
+1,[Races]
+
+:!Races
+1,[Human]
+2,Cryx
+
+:!Human
+1,Cygnar|place=Cygnar|
+2,Khador|place=Khador|
+3,Llael|place=Llael|
+4,Ord|place=Ord|
+5,Sul|place=Sul|
+
+:!HumanAdj
+1,|place=[Human]|
+_{If~%place%=Cygnar ? Cygnaran}
+_{If~%place%=Khador ? Khadoran}
+_{If~%place%=Llael ? Llaelese}
+_{If~%place%=Ord ? Ordic}
+_{If~%place%=Sul ? Sulese}

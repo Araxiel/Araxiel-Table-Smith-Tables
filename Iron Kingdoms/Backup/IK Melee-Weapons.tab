@@ -1,0 +1,67 @@
+﻿#
+# IK Weapons
+#
+
+%WeaponBlock%,
+%WepIndex%,
+
+%WeaponName%,
+%ATTMOD%,
+%POW%,
+%Skill%,
+%Cost%,
+%Special%,
+
+:Start
+1,{DSCreate~WeaponBlock,name,xxxxx,ATTMOD,0,POW,0,Skill,0,Cost,0,Special,}
+_{DSAddNR~WeaponBlock,name,Axe,				ATTMOD,0,	POW,3,	Skill,Hand,		Cost,8}
+_{DSAddNR~WeaponBlock,name,Axe Great,		ATTMOD,0,	POW,6,	Skill,Great,	Cost,25,	Special,Str 5 - On Crit additional die}
+_{DSAddNR~WeaponBlock,name,Axe Horseman,	ATTMOD,-1/0,POW,3/5,Skill,Hand,		Cost,20,	Special,Reach - 2+ mounted charge}
+_{DSAddNR~WeaponBlock,name,Bayonet,			ATTMOD,-1,	POW,2/3,Skill,Hand/Great,Cost,20,	Special,+2 charge on rifle}
+_{DSAddNR~WeaponBlock,name,Club,			ATTMOD,0,	POW,2,	Skill,Hand,		Cost,3,		Special,On crit Str+9 knockout}
+_{DSAddNR~WeaponBlock,name,Club Banded,		ATTMOD,-1,	POW,4,	Skill,Great,	Cost,6,		Special,STR 5 - On crit Str+11 knockout}
+_{DSAddNR~WeaponBlock,name,Cutlass,			ATTMOD,-1,	POW,4,	Skill,Hand,		Cost,15}
+_{DSAddNR~WeaponBlock,name,Dagger,			ATTMOD,1,	POW,1,	Skill,Hand,		Cost,5}
+_{DSAddNR~WeaponBlock,name,Flail,			ATTMOD,-1,	POW,4,	Skill,Hand,		Cost,15,	Special,Ignores Shields}
+_{DSAddNR~WeaponBlock,name,Flail Two-Handed,ATTMOD,-2,	POW,6,	Skill,Hand,		Cost,25,	Special,Reach - Ignores Shields - Crit spend feat to push 1'' and down and move up}
+_{DSAddNR~WeaponBlock,name,Halberd,			ATTMOD,-1/0,POW,4/5,Skill,Great,	Cost,25,	Special,Reach - Two or one hands - +2 charge}
+_{DSAddNR~WeaponBlock,name,Knuckledusters,	ATTMOD,0,	POW,1,	Skill,Unarmed,	Cost,5,		Special,+2 to Knockout strike}
+_{DSAddNR~WeaponBlock,name,Mace,			ATTMOD,-1,	POW,4,	Skill,Hand,		Cost,15,	Special,On crit Str+9 knockout}
+_{DSAddNR~WeaponBlock,name,Maul,			ATTMOD,0,	POW,6,	Skill,Great,	Cost,20,	Special,Str 5 - On crit spend feat to slam d3'' and POW of slam = STR+WepPow and collateral = STR}
+_{DSAddNR~WeaponBlock,name,Pickaxe,			ATTMOD,-1,	POW,4,	Skill,Hand,		Cost,15,	Special,On knocked down target spend feat for additional die}
+_{DSAddNR~WeaponBlock,name,Sword,			ATTMOD,0,	POW,3,	Skill,Hand,		Cost,12}
+_{DSAddNR~WeaponBlock,name,Sword Great,		ATTMOD,0,	POW,6,	Skill,Great,	Cost,20,	Special,Reach}
+_{DSAddNR~WeaponBlock,name,Trench Knife,	ATTMOD,0/-1,POW,2,	Skill,Hand/Unarmed,	Cost,10,Special,Knockout +2}
+_{DSAddNR~WeaponBlock,name,Trench Sword,	ATTMOD,-1,	POW,4/2,Skill,Hand/Unarmed,	Cost,15,Special,Knockout +2}
+_{DSAddNR~WeaponBlock,name,War Hammer,		ATTMOD,1,	POW,5,	Skill,Great,	Cost,20 	Special,STR 6 - On crit Str+12 knockout}
+_{DSAddNR~WeaponBlock,name,Knuckledriver,	ATTMOD,-1,	POW,3/1,Skill,Unarmed,	Cost,75		Special,STR 6 - Quick+Normal (else POW 1) - Beat Back Mighty (push 1'' and move 1'')}
+_{DSAddNR~WeaponBlock,name,Cat’s Paw,		ATTMOD,-1,	POW,2,	Skill,Hand,		Cost,6,		Special,Pry open using STR - Knockout on crit STR + 11}
+_{DSAddNR~WeaponBlock,name,Deadblow Hammer,	ATTMOD,-1,	POW,3,	Skill,Hand,		Cost,15,	Special,Spend 1 feat for additional die against down and prone}
+_{DSAddNR~WeaponBlock,name,Gaff Hand,		ATTMOD,0,	POW,2,	Skill,Hand,		Cost,1}
+_{DSAddNR~WeaponBlock,name,Gaff Pole,		ATTMOD,-1,	POW,3/4,Skill,Great,	Cost,1,		Special,Reach - Knocked down on critical}
+_{DSAddNR~WeaponBlock,name,Ice Axe,			ATTMOD,0,	POW,2,	Skill,Hand,		Cost,5}
+_{DSAddNR~WeaponBlock,name,Railman’s Adze,	ATTMOD,0,	POW,7,	Skill,Great,	Cost,20,	Special,STR 6 - -2 DEF after miss}
+_{DSAddNR~WeaponBlock,name,Spike Maul,		ATTMOD,-2,	POW,6,	Skill,Great,	Cost,25,	Special,STR 5 - -2 DEF after miss - on crit knocked}
+_{DSAddNR~WeaponBlock,name,Chain,			ATTMOD,-2,	POW,3,	Skill,Great,	Cost,5,		Special,STR 5 one hand - reach - ignores shield ARM - 1 feat point for trip}
+
+_|WepIndex={Dice~1d{DSCount~WeaponBlock}}|
+_|WeaponName={DSGet~WeaponBlock,%WepIndex%,name}|
+_|ATTMOD={DSGet~WeaponBlock,%WepIndex%,ATTMOD}|
+_|POW={DSGet~WeaponBlock,%WepIndex%,POW}|
+_|Skill={DSGet~WeaponBlock,%WepIndex%,Skill}|
+_|Cost={DSGet~WeaponBlock,%WepIndex%,Cost}|
+_|Special={DSGet~WeaponBlock,%WepIndex%,Special}|
+
+_[Display]
+
+# ------------------------------
+# Display
+# ------------------------------
+
+:Display
+1,<b>Weapon:</b> %WeaponName%{CR~}
+_<b>Attack Modifier:</b> %ATTMOD%{CR~}
+_<b>POW:</b> %POW%{CR~}
+_<b>Skill:</b> %Skill%{CR~}
+_<b>Cost:</b> %Cost% gc{CR~}
+_<b>Special:</b> %Special%{CR~}

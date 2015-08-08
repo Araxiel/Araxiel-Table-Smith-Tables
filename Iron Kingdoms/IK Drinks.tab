@@ -1,0 +1,34 @@
+﻿#
+# AR Drinks
+# By Araxiel
+
+%x%,0
+
+;Start
+1,[Drinks]
+
+;Drinks
+1,ale
+1,[IK Places.TemperateAdj] ale
+1,vodka
+1,Khadoran vodka
+1,Redash mead
+1,Stoneadder
+1,[IK Places.TemperateAdj] brandy
+1,Firebrand wine
+1,Honigpaw mead
+1,Redwater rum
+1,spiced wine
+1,spiced rum
+1,Velvet LeRinsere
+2,wine
+2,beer
+1,[IK Places.TemperateAdj] beer
+2,local beer
+
+#This forces different kind of drinks
+
+;Ale
+1,[Drinks=1]
+1,[Drinks=2]
+1,[Drinks=4]

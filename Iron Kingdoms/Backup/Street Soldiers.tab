@@ -1,0 +1,124 @@
+﻿# ------------------------------
+# Variables
+# ------------------------------
+%Race%,0
+
+%Level%,1
+
+%PHY%,0
+%SPD%,0
+%AGL%,0
+%PRW%,0
+%POI%,0
+%INT%,0
+%PER%,0
+%ARC%,0
+
+%INI%{CR~}
+%DEF%{CR~}
+%ARM%{CR~}
+%WILL%{CR~}
+
+# ------------------------------
+# Main
+# ------------------------------
+
+:Start
+1,[GenStats][DisplayCharacter]
+
+:GenStats
+1,[Race]
+
+:DisplayCharacter
+1, <b>Race:</b> %Race%{CR~}{CR~}
+
+_<b>PHY:</b> [PHY=human]{CR~}
+_<b>SPD:</b> %SPD%{CR~}
+_<b>AGL:</b> %AGL%{CR~}
+_<b>PRW:</b> %PRW%{CR~}
+_<b>POI:</b> %POI%{CR~}
+_<b>INT:</b> %INT%{CR~}
+_<b>PER:</b> %PER%{CR~}
+_<b>ARC:</b> %ARC%{CR~}{CR~}
+
+_<b>Melee Weapon:</b> [Melee]{CR~}
+_<b>Ranged Weapon:</b> [Ranged]{CR~}{CR~}
+
+_<b>INIT:</b> %INI%{CR~}
+_<b>DEF:</b> %DEF%{CR~}
+_<b>ARM:</b> %ARM%{CR~}
+_<b>WILL:</b> %WILL%{CR~}{CR~}
+
+_<b>Vitality:</b> [Vitality]{CR~}
+_<b>Encounter Points::</b> 7{CR~}{CR~}
+
+_<b>Special</b>{CR~}{Loop~{Dice~1d5},{Cap~[Special]}}
+
+# ------------------------------
+# Stats
+# ------------------------------
+
+:Race
+1-20, |Race=Human|
+21-23, |Race=Dwarf|
+24-25, |Race=Gobber|
+26, |Race=Iosan|
+27, |Race=Nyss|
+28, |Race=Ogrun|
+29-30, |Race=Trollkin|
+
+:PHY
+human, 5
+dwarf, 6
+
+# ------------------------------
+# Workings
+# ------------------------------
+
+:Vitality
+1,{Dice~2d3+5}
+
+# ------------------------------
+# Appearance (Taken mostly from "Character Appearance" preset)
+# ------------------------------
+
+:Special
+1-2,eye patch{CR~}
+3-4,visible tatoo on [Body Part]{CR~}
+5-8,his hair is [Hair]{CR~}
+8-10,scar [Facialfeatures]{CR~}
+11-16,
+
+:Hair
+1-5,Brown, [Style]
+6-8,Blond, [Style]
+9-10,Red, [Style]
+11,White, [Style]
+12,Grey, [Style]
+
+:Style
+1-2,short and straight
+3-4,short and curly
+5-7,moderate in length and straight
+8-10,moderate in length and curly
+11,long and straight, unbound
+12,long and straight, tied in the back
+13,long and curly, unbound
+14,long and curly, tied in the back
+
+:Side
+1,left
+2,right
+
+:Body Part
+1,forehead
+2,[Side] cheek
+3,[Side] hand
+4,neck
+
+:Facialfeatures
+1-2,over the [Side] eye
+3,on the [Side] cheek
+4,over the nose
+5,across the chin
+6,across the forehead

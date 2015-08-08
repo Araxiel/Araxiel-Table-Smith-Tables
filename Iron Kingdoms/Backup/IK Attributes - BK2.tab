@@ -1,0 +1,92 @@
+﻿#
+# IK Attributes
+#
+
+# ------------------------------
+# Variables
+# ------------------------------
+
+%Race%,0
+
+%Level%,1
+
+%PHY%,0
+%SPD%,0
+%AGL%,0
+%PRW%,0
+%POI%,0
+%INT%,0
+%PER%,0
+%ARC%,0
+
+%INI%,0
+%DEF%,0
+%ARM%,0
+%WILL%,0
+
+%Statblock%,xxx
+%Name%,xxx
+
+# ------------------------------
+# Main
+# ------------------------------
+
+:Start
+1,[GenStats][DisplayCharacter]
+
+:GenStats
+1,[Race]
+_{DSCreate~Statblock,name,xxxxx,PHY,0,SPD,0,STR,0,AGL,0,PRW,0,POI,0,INT,0,ARC,0,PER,0}
+_{DSAddNR~Statblock,name,Human,PHY,5,SPD,6,STR,4,AGL,3,PRW,4,POI,4,INT,3,ARC,0,PER,3}
+_{DSAddNR~Statblock,name,Dwarf,PHY,6,SPD,4,STR,5,AGL,3,PRW,4,POI,3,INT,4,ARC,0,PER,3}
+_{DSAddNR~Statblock,name,Gobber,PHY,4,SPD,6,STR,3,AGL,4,PRW,4,POI,3,INT,3,ARC,0,PER,3}
+_{DSAddNR~Statblock,name,Iosan,PHY,5,SPD,6,STR,4,AGL,3,PRW,4,POI,4,INT,4,ARC,0,PER,3}
+_{DSAddNR~Statblock,name,Nyss,PHY,5,SPD,6,STR,4,AGL,4,PRW,4,POI,4,INT,3,ARC,0,PER,3}
+_{DSAddNR~Statblock,name,Ogrun,PHY,6,SPD,5,STR,6,AGL,3,PRW,4,POI,3,INT,3,ARC,0,PER,2}
+_{DSAddNR~Statblock,name,Trollkin,PHY,6,SPD,5,STR,5,AGL,3,PRW,4,POI,2,INT,3,ARC,0,PER,3}
+
+_|PHY={DSGet~Statblock,{DSFind~Statblock,1,name = %Race%},PHY}|
+_|SPD={DSGet~Statblock,{DSFind~Statblock,1,name = %Race%},SPD}|
+_|AGL={DSGet~Statblock,{DSFind~Statblock,1,name = %Race%},AGL}|
+_|PRW={DSGet~Statblock,{DSFind~Statblock,1,name = %Race%},PRW}|
+_|POI={DSGet~Statblock,{DSFind~Statblock,1,name = %Race%},POI}|
+_|INT={DSGet~Statblock,{DSFind~Statblock,1,name = %Race%},INT}|
+_|ARC={DSGet~Statblock,{DSFind~Statblock,1,name = %Race%},ARC}|
+_|PER={DSGet~Statblock,{DSFind~Statblock,1,name = %Race%},PER}|
+
+_|DEF={Calc~%SPD%+%AGL%+%PER%}|
+_|ARM=%PHY%|
+_|INIT={Calc~%SPD%+%PRW%+%PER%}|
+_|WILL={Calc~%PHY%+%INT%}|
+
+:DisplayCharacter
+1, <b>Race:</b> %Race%{CR~}{CR~}
+
+_<b>PHY:</b> %PHY%{CR~}
+_<b>SPD:</b> %SPD%{CR~}
+_<b>AGL:</b> %AGL%{CR~}
+_<b>PRW:</b> %PRW%{CR~}
+_<b>POI:</b> %POI%{CR~}
+_<b>INT:</b> %INT%{CR~}
+_<b>ARC:</b> %ARC%{CR~}
+_<b>PER:</b> %PER%{CR~}{CR~}
+
+_<b>DEF:</b> %DEF%{CR~}
+_<b>ARM:</b> %ARM%{CR~}
+_<b>INIT:</b> %INI%{CR~}
+_<b>WILL:</b> %WILL%{CR~}{CR~}
+
+_{Line~Center,50%}
+
+# ------------------------------
+# Stats
+# ------------------------------
+
+:Race
+1-20, |Race=Human|
+21-23, |Race=Dwarf|
+24-25, |Race=Gobber|
+26, |Race=Iosan|
+27, |Race=Nyss|
+28, |Race=Ogrun|
+29-30, |Race=Trollkin|

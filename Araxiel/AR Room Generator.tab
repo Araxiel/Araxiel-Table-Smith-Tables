@@ -1,0 +1,290 @@
+﻿#
+# AR Room Generator
+# By Araxiel
+
+# ------------------------------
+# Variables
+# ------------------------------
+
+%x%,0
+%num%,0
+%room%,0
+%RoomSelector%,0
+
+%RoomInput%,0
+@RoomInput,5,Select room,Living Room,Storage Room,Pantry,Hallway,Random
+
+# ------------------------------
+# Main
+# ------------------------------
+
+:Start
+1,[Display]
+
+:Display
+1,|RoomSelector={Select~%RoomInput%,1,living room,2,storage room,3,pantry,4,hallway,5,[Roomname],[Roomname]}|
+_|room=%RoomSelector%|
+_[Roomkind]
+_[Main %room%]{CR~}
+_[Doors %room%]{CR~}
+
+_{Line~left,50}
+
+# ------------------------------
+# Main Generators
+# ------------------------------
+
+# This is to add a text-line
+;Roomkind
+1, This room seems to {Trim~be {AorAn~[Size] %RoomSelector%}}
+
+# A list of possible room-names
+;Roomname
+2,living room|room=Living Room|
+3,storage room|room=Storage Room|
+1,pantry|room=Pantry|
+2,hallway|room=Hallway|
+3,room|room=room|
+
+# ---------------
+# Living Room
+
+;Main living room
+1, 
+2,{CR~}In the middle of the room is a table with [smallObjectAmount]
+
+;Doors living room
+1,There is a door [placedsynonym] on the right side [of the room]
+1,There is a door [placedsynonym] on the left side [of the room]
+1,There is a door [placedsynonym] on the far side [of the room]
+1,There are doors [placedsynonym] on the left and right side [of the room]
+2,There is no other door
+
+# ---------------
+# Storage Room
+
+;Main storage room
+2,{CR~}In the middle of the room [ContainerAmount] {PluralIf~%num%,barrel} {Generate~0,containing (...),insideContainer}
+2,{CR~}In the middle of the room [ContainerAmount] {PluralIf~%num%,box} {Generate~0,containing (...),insideContainer}
+1,
+
+;ContainerAmount
+1,is a|num=1|
+1,are a few|num={Dice~2d6}|
+1,are a couple|num={Dice~2d4}|
+1,are a lot|num={Dice~4d3}|
+1,are a number of|num={Dice~1d10+1}|
+
+;Doors storage room
+1,There is a door [placedsynonym] on the right side [of the room]
+1,There is a door [placedsynonym] on the left side [of the room]
+1,There is a door [placedsynonym] on the far side [of the room]
+1,There are doors [placedsynonym] on the left and right side [of the room]
+4,There is no other door
+
+;of the room
+1,of the room
+1,
+
+# ---------------
+# Room
+;Main room
+1,[Main living room]
+1,[Main storage room]
+
+;Doors room
+1,There is a door [placedsynonym] on the right side [of the room]
+1,There is a door [placedsynonym] on the left side [of the room]
+1,There is a door [placedsynonym] on the far side [of the room]
+1,There are doors [placedsynonym] on the left and right side [of the room]
+4,There is no other door
+
+# ---------------
+# Kitchen
+
+;Main kitchen
+1,{CR~}The kitchen is empty
+3,{CR~}The kitchen has some food
+2,{CR~}The kitchen is fully equipped
+
+;Doors kitchen
+1,There is a door [placedsynonym] on the right side [of the room]
+1,There is a door [placedsynonym] on the left side [of the room]
+1,There is a door [placedsynonym] on the far side [of the room]
+1,There are doors [placedsynonym] on the left and right side [of the room]
+4,There is no other door
+
+# ---------------
+# Pantry
+
+;Main pantry
+1,{CR~}The pantry is empty
+3,{CR~}The pantry has some food
+2,{CR~}The pantry is full
+
+;Doors pantry
+1,
+
+# ---------------
+# Hallway
+
+;Main hallway
+3,{CR~}The hallway is straight [hallway objects init]
+1,{CR~}There is a corner that goes [hallway corner] [hallway corner objects]
+
+;hallway corner
+1,left
+1,right
+
+# So there is a "and"
+;hallway objects init
+2, and [hallway objects]
+1,
+
+;hallway objects
+3,empty
+1,full of boxes {Generate~0,containing (...),insideContainer}
+
+# For sentence reasons
+;hallway corner objects
+2, and it seems to be [hallway objects]
+1,
+
+;Doors hallway
+1,There is a door [placedsynonym] on the right side
+1,There is a door [placedsynonym] on the left side
+2,There is a door [placedsynonym] at the end of the hallway
+1,There are doors [placedsynonym] on the left and right side of the hallway
+1,There is a door [placedsynonym] at the end of the hallway and one on the left
+1,There is a door [placedsynonym] at the end of the hallway and one on the right
+1,There is a door [placedsynonym] at the end of the hallway and one on the right and the left side each
+1,There is no other door
+
+# ---------------
+# 
+# ---------------
+# This is so the word 'containing' is added even after the {Generate} function
+;insideContainer
+< containing 
+3,[smallObjectAmount]
+1,nothing
+
+# --------------------------
+# Main bulk of small items
+# --------------------------
+# A list of various small objects
+;smallObjectList
+1,{PluralIf~%num%,bottle} of [IK Drinks.Start]
+1,empty {PluralIf~%num%,bottle} of [IK Drinks.Start]
+1,broken [smallObjectList]
+1,damaged [smallObjectList]
+#1,{PluralIf~%num%,[IK Weapons.Melee]}
+#1,{PluralIf~%num%,[IK Weapons.Range]}
+1,axe {PluralIf~%num%,handle}
+1,{PluralIf~%num%,broom}
+1,{PluralIf~%num%,bucket}
+1,{PluralIf~%num%,book}
+1,{PluralIf~%num%,candlestick}
+1,{PluralIf~%num%,cast iron pot}
+1,{PluralIf~%num%,pelt}
+1,{PluralIf~%num%,charcoal}
+1,{PluralIf~%num%,clothes iron}
+1,{PluralIf~%num%,coin purse}
+1,{PluralIf~%num%,scrap metal chunk}
+1,{PluralIf~%num%,cup}
+1,{PluralIf~%num%,map}
+1,{PluralIf~%num%,flagon}
+1,{PluralIf~%num%,goblet}
+1,{PluralIf~%num%,hammer}
+1,{PluralIf~%num%,hide}
+1,{PluralIf~%num%,jug}
+1,{PluralIf~%num%,inkwell}
+1,{PluralIf~%num%,kettle}
+1,{PluralIf~%num%,knife}
+1,{PluralIf~%num%,lantern}
+1,{PluralIf~%num%,pint} of oil
+1,{PluralIf~%num%,piece} of leather
+1,{PluralIf~%num%,leather strap}
+1,{PluralIf~%num%,lockpick}
+1,{PluralIf~%num%,model ship}
+1,{PluralIf~%num%,lockpick}
+1,{PluralIf~%num%,spices}
+1,{PluralIf~%num%,lockpick}
+1,{PluralIf~%num%,pelt}
+1,{PluralIf~%num%,plate}
+1,{PluralIf~%num%,platter}
+1,{PluralIf~%num%,quill}
+1,writing utensils
+1,{PluralIf~%num%,sheet} of paper
+1,{PluralIf~%num%,saw}
+1,{PluralIf~%num%,shovel}
+1,{PluralIf~%num%,silver candlestick}
+1,{PluralIf~%num%,silverware}
+1,{PluralIf~%num%,skull}
+1,{PluralIf~%num%,bowl}
+1,{PluralIf~%num%,tankard}
+1,{PluralIf~%num%,wooden plate}
+1,{PluralIf~%num%,wooden ladle}
+1,{PluralIf~%num%,bellow}
+1,{PluralIf~%num%,pair of tongs}
+1,clothing
+
+# --------------------------
+# Adds different amount of different objects
+;smallObjectAmount
+2,[smallObjects]
+4,[smallObjects] and [smallObjects]
+3,[smallObjects], [smallObjects] and [smallObjects]
+2,[smallObjects], [smallObjects], [smallObjects] and [smallObjects]
+2,[smallObjects], [smallObjects], [smallObjects], [smallObjects] and [smallObjects]
+
+#the amount of small objects
+;smallObjects
+2,|num=1|{AorAn~[~smallObjectList]}
+3,|num={Dice~2d6}|a [SomeAmount] [~smallObjectList]
+10,|num={Dice~3d4}|some (%num%) [~smallObjectList]
+5,[NumWord] [~smallObjectList]
+
+# ------------------------------
+# Used in various lists
+# ------
+
+# Random sizes
+;Size
+5, 
+2,small
+1,large
+
+# Various numbers spelled out
+;NumWord
+1,one|num=1|
+1,two|num=2|
+1,three|num=3|
+1,four|num=4|
+1,five|num=5|
+1,six|num=6|
+1,seven|num=7|
+1,eight|num=8|
+1,nine|num=9|
+1,ten|num=10|
+
+# Various amounts
+;SomeAmount
+1,few|num={Dice~3d2}|
+1,couple|num={Dice~2d3}|
+1,lot of|num={Dice~3d3+1}|
+1,number of|num={Dice~2d5+1}|
+
+#Various synonyms of found, placed, located etc.
+;placedsynonym
+1,
+2,found
+2,placed
+2,located
+2,situated
+2,positioned
+
+# Just to spice up the sentences a bit
+;of the room
+1,of the room
+1,
